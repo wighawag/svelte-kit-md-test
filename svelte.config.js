@@ -1,4 +1,3 @@
-
 import preprocess from 'svelte-preprocess';
 import adapter_ipfs from 'sveltejs-adapter-ipfs';
 
@@ -26,8 +25,8 @@ function listFolder(dir, files=[]) {
 	return files;
 }
 
-
 const pages = 'pages';
+const assets = 'static';
 const filepaths = listFolder(pages);
 const pagePaths = filepaths.map(v => v.replace(/.md$/, '').replace(`${pages}/`, ''));
 const permalinks = [];
@@ -114,7 +113,8 @@ const config = {
 	kit: {
 		files: {
 			routes: pages,
-			template: 'template.html'
+			template: 'template.html',
+			assets: assets
 		},
 		adapter: adapter_ipfs({
 		  assets: outputFolder,
