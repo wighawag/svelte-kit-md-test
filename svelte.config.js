@@ -80,15 +80,20 @@ const config = {
 							// if (!permalinkMap[permalink]) {
 							// 	console.error(`not found ${permalink}`)
 							// }
-							const pagepath = permalinkMap[permalink];
+							let pagepath = permalinkMap[permalink];
 							if (!pagepath) {
 								return ""; // make link noops
 							}
 							// console.log(`${permalink} => ${pagepath}`)
 							if (pagepath.endsWith('/index')) {
-								return pagepath.substr(0, pagepath.length - 6);
+								pagepath = pagepath.substr(0, pagepath.length - 6);
 							}
-							return pagepath;
+
+							// absolute path and then relativize it via adapter (ipfs )
+							if (!pagepath.startsWith('/')) {
+								pagepath = "/" + pagepath;
+							}
+							return pagepath
 						},
 						wikiLinkClassName: 'internal wikilink'
 					}
