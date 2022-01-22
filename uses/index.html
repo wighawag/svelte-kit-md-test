@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+	<link rel="stylesheet" href="../_app/assets/pages/__layout.md-c20da84b.css">
+	<link rel="modulepreload" href="../_app/start-dde38c65.js">
+	<link rel="modulepreload" href="../_app/chunks/vendor-358e88b8.js">
+	<link rel="modulepreload" href="../_app/pages/__layout.md-8d352d9e.js">
+	<link rel="modulepreload" href="../_app/pages/uses.md-cc188cea.js">
+			
+    <script>
+      window.BASE = (() => {
+        const normalised = (location.pathname.endsWith("/") ? location.pathname.substr(0, location.pathname.length -1) : location.pathname).substr(1);
+        const split = normalised.split('/');
+        const sliced = 1 ? split.slice(0, -1) : split;
+        const str = (sliced.length > 0 && sliced[0] !== "") ? "/" + sliced.join('/') : "";
+        return str;
+      })();
+    </script>
+
+    <script>
+      // ensure we save href as they are loaded, so they do not change on page navigation
+      document.querySelectorAll("link[href]").forEach((v) => v.href = v.href);
+    </script>
+
+      <script>
+        (function () {
+          if (!!/\?_d_eruda/.test(window.location) || !!/&_d_eruda/.test(window.location)) {
+            var src = '../scripts/eruda.js';
+            window._debug = true;
+            document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+            document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+          }
+        })();
+      </script>
+  <script type="module">
+				import { start } from "../_app/start-dde38c65.js";
+				start({
+					target: document.querySelector("#svelte"),
+					paths: {"base": window.BASE,"assets":""},
+					session: {},
+					route: true,
+					spa: false,
+					trailing_slash: "ignore",
+					hydrate: {
+						status: 200,
+						error: null,
+						nodes: [
+							import("../_app/pages/__layout.md-8d352d9e.js"),
+						import("../_app/pages/uses.md-cc188cea.js")
+						],
+						url: new URL("http://sveltekit-prerender/uses"),
+						params: {}
+					}
+				});
+			</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<h1 id="uses"><a aria-hidden="true" tabindex="-1" href="#uses"><span class="icon icon-link"></span></a>Uses</h1>
+<p><strong>Here’s some stuff I use</strong></p>
+<ul><li>SvelteKit</li>
+<li>VS Code</li>
+<li>Emojis 😎</li></ul>
+<pre class="language-json"><!-- HTML_TAG_START --><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"hello"</span><span class="token operator">:</span> <span class="token string">"world"</span><span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<pre class="language-php"><!-- HTML_TAG_START --><code class="language-php"><span class="token keyword">class</span> <span class="token class-name-definition class-name">Dog</span> <span class="token keyword">extends</span> <span class="token class-name">Pet</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span>
+        <span class="token keyword">public</span> <span class="token keyword type-declaration">string</span> <span class="token variable">$name</span><span class="token punctuation">,</span>
+        <span class="token keyword">public</span> <span class="token keyword type-declaration">bool</span> <span class="token variable">$isGoodBoy</span><span class="token punctuation">,</span>
+        <span class="token keyword">public</span> <span class="token keyword type-declaration">bool</span> <span class="token variable">$isHappy</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function-definition function">pat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">isHappy</span> <span class="token operator">=</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+
+</div>
+	</body>
+</html>

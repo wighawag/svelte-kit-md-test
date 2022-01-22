@@ -1,0 +1,2 @@
+import{S as c,i as r,s as l,e as d,t as p,c as f,a as m,h,d as o,g as u,J as _,K as s}from"../../chunks/vendor-358e88b8.js";function x(i){let e,n;return{c(){e=d("p"),n=p("index of section")},l(t){e=f(t,"P",{});var a=m(e);n=h(a,"index of section"),a.forEach(o)},m(t,a){u(t,e,a),_(e,n)},p:s,i:s,o:s,d(t){t&&o(e)}}}class S extends c{constructor(e){super();r(this,e,null,x,l,{})}}export{S as default};
+//# sourceMappingURL=index.md-b1c28aff.js.map
