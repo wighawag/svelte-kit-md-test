@@ -4,10 +4,12 @@ import adapter_ipfs from 'sveltejs-adapter-ipfs';
 
 import {mdsvex} from 'mdsvex';
 import remarkGFM from 'remark-gfm';
+import remarkMath from 'remark-math';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import remarkWikiLinks from 'remark-wiki-link';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
+import rehypeMathJax from 'rehype-mathjax';
 
 import {execSync} from 'child_process';
 
@@ -71,6 +73,7 @@ const config = {
 		mdsvex({
 			extensions: ['.md'],
 			remarkPlugins: [
+				remarkMath,
 				remarkGFM,
 				[
 					remarkWikiLinks,
@@ -101,6 +104,7 @@ const config = {
 				remarkUnwrapImages
 			],
 			rehypePlugins: [
+				rehypeMathJax,
 				rehypeSlug,
 				rehypeAutolinkHeadings,
 			],

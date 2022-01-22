@@ -1,14 +1,10 @@
 {
   "name": "svelte-kit-md-test",
   "version": "0.0.1",
-  "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "package": "svelte-kit package",
-    "preview": "svelte-kit preview"
-  },
+  "type": "module",
   "devDependencies": {
-    "@sveltejs/kit": "next",
+    "@sveltejs/kit": "1.0.0-next.212",
+    "ipfs-gateway-emulator": "^4.2.1-ipfs.2",
     "mdsvex": "^0.9.8",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
@@ -17,7 +13,17 @@
     "remark-wiki-link": "0.0.4",
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.9.4",
-    "sveltejs-adapter-ipfs": "^0.2.0"
+    "sveltejs-adapter-ipfs": "^0.2.1"
   },
-  "type": "module"
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "package": "svelte-kit package",
+    "preview": "svelte-kit preview",
+    "serve": "ipfs-emulator --only -d build -p 8080"
+  },
+  "dependencies": {
+    "rehype-mathjax": "^4.0.2",
+    "remark-math": "^5.1.1"
+  }
 }
