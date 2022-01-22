@@ -25,8 +25,8 @@ function listFolder(dir, files=[]) {
 	return files;
 }
 
-const pages = 'pages';
-const assets = 'static';
+const pages = 'foam-pages';
+const assets = 'foam-static';
 const filepaths = listFolder(pages);
 const pagePaths = filepaths.map(v => v.replace(/.md$/, '').replace(`${pages}/`, ''));
 const permalinks = [];
