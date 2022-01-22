@@ -80,14 +80,17 @@ const config = {
 							// if (!permalinkMap[permalink]) {
 							// 	console.error(`not found ${permalink}`)
 							// }
-							const pagepath = permalinkMap[permalink] || permalink;
+							const pagepath = permalinkMap[permalink];
+							if (!pagepath) {
+								return ""; // make link noops
+							}
 							// console.log(`${permalink} => ${pagepath}`)
 							if (pagepath.endsWith('/index')) {
 								return pagepath.substr(0, pagepath.length - 6);
 							}
 							return pagepath;
 						},
-						// wikiLinkClassName: 'internal wikilink'
+						wikiLinkClassName: 'internal wikilink'
 					}
 				],
 				remarkUnwrapImages

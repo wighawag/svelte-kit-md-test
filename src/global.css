@@ -1,0 +1,6 @@
+@import url(./highlight/prism-gruvbox-dark.css);
+
+/* highlight non-existing links */
+.wikilink.new {
+    color: red;
+}

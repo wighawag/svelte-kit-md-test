@@ -8,3 +8,5 @@ Test
 [[section/index]]
 
 [[subsection/testing]]
+
+[[1]]
