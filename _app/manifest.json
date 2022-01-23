@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-254d7c2b.js",
+    "file": "start-eac04536.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -11,8 +11,6 @@
       ".svelte-kit/build/components/error.svelte",
       "pages/index.md",
       "pages/2022-01-23-11-46-17.md",
-      "pages/section/index.md",
-      "pages/section/subsection/index.md",
       "pages/section/subsection/testing.md",
       "pages/section/testing.md",
       "pages/section/1.md",
@@ -41,7 +39,7 @@
     ]
   },
   "pages/index.md": {
-    "file": "pages/index.md-3b640149.js",
+    "file": "pages/index.md-7bec9086.js",
     "src": "pages/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -50,26 +48,8 @@
     ]
   },
   "pages/2022-01-23-11-46-17.md": {
-    "file": "pages/2022-01-23-11-46-17.md-8f74d6ac.js",
+    "file": "pages/2022-01-23-11-46-17.md-4109f0e2.js",
     "src": "pages/2022-01-23-11-46-17.md",
-    "isEntry": true,
-    "isDynamicEntry": true,
-    "imports": [
-      "_vendor-7856393e.js"
-    ]
-  },
-  "pages/section/index.md": {
-    "file": "pages/section/index.md-65d544a6.js",
-    "src": "pages/section/index.md",
-    "isEntry": true,
-    "isDynamicEntry": true,
-    "imports": [
-      "_vendor-7856393e.js"
-    ]
-  },
-  "pages/section/subsection/index.md": {
-    "file": "pages/section/subsection/index.md-818f66dd.js",
-    "src": "pages/section/subsection/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
