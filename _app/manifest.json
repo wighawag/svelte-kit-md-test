@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-98557416.js",
+    "file": "start-254d7c2b.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -11,10 +11,7 @@
       ".svelte-kit/build/components/error.svelte",
       "pages/index.md",
       "pages/2022-01-23-11-46-17.md",
-      "pages/subsectiontesting.md",
-      "pages/sectionindex.md",
       "pages/section/index.md",
-      "pages/section/non-existing.md",
       "pages/section/subsection/index.md",
       "pages/section/subsection/testing.md",
       "pages/section/testing.md",
@@ -44,7 +41,7 @@
     ]
   },
   "pages/index.md": {
-    "file": "pages/index.md-2e543fd9.js",
+    "file": "pages/index.md-3b640149.js",
     "src": "pages/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -61,36 +58,9 @@
       "_vendor-7856393e.js"
     ]
   },
-  "pages/subsectiontesting.md": {
-    "file": "pages/subsectiontesting.md-f97e16dd.js",
-    "src": "pages/subsectiontesting.md",
-    "isEntry": true,
-    "isDynamicEntry": true,
-    "imports": [
-      "_vendor-7856393e.js"
-    ]
-  },
-  "pages/sectionindex.md": {
-    "file": "pages/sectionindex.md-95e11e6f.js",
-    "src": "pages/sectionindex.md",
-    "isEntry": true,
-    "isDynamicEntry": true,
-    "imports": [
-      "_vendor-7856393e.js"
-    ]
-  },
   "pages/section/index.md": {
     "file": "pages/section/index.md-65d544a6.js",
     "src": "pages/section/index.md",
-    "isEntry": true,
-    "isDynamicEntry": true,
-    "imports": [
-      "_vendor-7856393e.js"
-    ]
-  },
-  "pages/section/non-existing.md": {
-    "file": "pages/section/non-existing.md-22566479.js",
-    "src": "pages/section/non-existing.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
@@ -125,7 +95,7 @@
     ]
   },
   "pages/section/1.md": {
-    "file": "pages/section/1.md-6e8ff4a0.js",
+    "file": "pages/section/1.md-ada512ab.js",
     "src": "pages/section/1.md",
     "isEntry": true,
     "isDynamicEntry": true,
