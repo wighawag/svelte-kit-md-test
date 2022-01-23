@@ -122,6 +122,7 @@ const config = {
 				rehypeMathJax,
 				rehypeSlug,
 				rehypeAutolinkHeadings,
+				// rehype-foam-svelte-kit
 				() => {
 					let currentFilename;
 					function visitor(node, index, parent) {
@@ -176,22 +177,21 @@ const config = {
 									const urlLocalPath = path.join(path.dirname(currentFilename), pathname);
 									let relative = path.relative(currentFilename, urlLocalPath);
 
-									if (pathname.indexOf('../static/') === -1) {
+									const relativeToAssets = path.relative(path.resolve(assets), urlLocalPath);
+									if (relativeToAssets.startsWith('..')) {
 										// use absolute path solve everything it seems
 										pathname = "/" + path.join(currentRelativePath, relative);
 									} else {
 										// keep for static assets
 										pathname = relative;
+
+										if (currentRelativePath === 'index.md') {
+											// special case for index, static assets is actually at level
+											pathname = pathname.replace(`../../${assets}/`, '');
+										} else {
+											pathname = pathname.replace(`../${assets}/`, '');
+										}
 									}
-									
-									
-									if (currentRelativePath === 'index.md') {
-										// special case for index, static is actually at level
-										pathname = pathname.replace('../../static/', '');
-									} else {
-										pathname = pathname.replace('../static/', '');
-									}
-									
 								} else {
 									// hash link in current page
 									if (hash.length > 0) {

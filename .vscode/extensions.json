@@ -22,6 +22,7 @@
     "kortina.vscode-markdown-notes",
     "bierner.markdown-mermaid",
     "skn0tt.markdown-link-expander",
-    "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
+    "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+    "tlahmann.alex-linter"
   ]
 }
