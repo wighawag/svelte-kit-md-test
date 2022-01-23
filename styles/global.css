@@ -1,0 +1,6 @@
+@import url(./highlight/prism-base16-ateliersulphurpool.light.css);
+
+/* highlight non-existing links */
+.wikilink.new {
+    color: red;
+}
