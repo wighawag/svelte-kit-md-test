@@ -27,7 +27,7 @@ function listFolder(dir, files=[]) {
 }
 
 const pages = 'foam-pages';
-const assets = 'foam-static';
+const assets = 'static';
 const filepaths = listFolder(pages);
 const pagesAbsoultePath = path.resolve(pages);
 const pagePaths = filepaths.map(v => v.replace(/.md$/, '').replace(`${pages}/`, ''));
@@ -125,58 +125,127 @@ const config = {
 				() => {
 					let currentFilename;
 					function visitor(node, index, parent) {
-						// let url;
-						// switch(node.tagName) {
-						// 	case 'a':
-						// 		url = node.properites.href;
-						// 		break;
-						// 	case 'img':
-						// 	case 'video':
-						// 	case 'audio':
-						// 		url = node.properites.src;
-						// 		break;
-						// }
+						let url;
+						switch(node.tagName) {
+							case 'a':
+								url = node.properties.href;
+								break;
+							case 'img':
+							case 'video':
+							case 'audio':
+								url = node.properties.src;
+								break;
+						}
 
-						// if (url) {
-
-						// }
-
-						if (node.tagName === 'a') {
-							// console.log('found ', node);
-							if (node.properties.href && node.properties.href.length > 1 && node.properties.href.startsWith('#')) {
-								// console.log('found ', node);
-								let relative = path.relative(pagesAbsoultePath, currentFilename);
-								if (relative.endsWith('.md')) {
-									relative = relative.slice(0, relative.length - 3);
+						if (url && !url.startsWith('http')) {
+							const currentRelativePath = path.relative(pagesAbsoultePath, currentFilename);
+							const splitOne = url.split('?');
+							let pathname = '';
+							let hash = '';
+							let query = '';
+							if (splitOne.length > 1) {
+								pathname = splitOne[0];
+								const splitTwo = splitOne[1].split('#');
+								if (splitTwo.length > 1) {
+									query = '?' + splitTwo[0];
+									hash = '#' + splitTwo[1];
+								} else {
+									query = '?' + splitOne[1];
 								}
-								node.properties.href = "/" + relative + '/' + node.properties.href;
+							} else {
+								const splitTwo = splitOne[0].split('#');
+								if (splitTwo.length > 1) {
+									pathname = splitTwo[0];
+									hash = '#' + splitTwo[1];
+								} else {
+									pathname = splitOne[0];
+								}
+								
 							}
 
-							if (node.properties.href && node.properties.href.endsWith('index')) {
-								node.properties.href = node.properties.href.slice(0, node.properties.href.length - 5);
-					 		}
-							if (node.properties.href && node.properties.href.endsWith('index.md')) {
-								node.properties.href = node.properties.href.slice(0, node.properties.href.length - 8);
-					 		}
-							if (node.properties.href && node.properties.href.indexOf('index/#') >= 0) {
-								const index = node.properties.href.indexOf('index/#');
-								node.properties.href = node.properties.href.slice(0, index) + node.properties.href.slice(index+5);
-					 		}
-							if (node.properties.href && node.properties.href.indexOf('//#') >= 0) {
-								const index = node.properties.href.indexOf('//#');
-								node.properties.href = node.properties.href.slice(0, index) + node.properties.href.slice(index+1);
-					 		}
+							if (pathname.startsWith('/daily-notes')) {
+								console.log({currentFilename});
+							}
 
-							// if (node.properties.href && node.properties.href.startsWith('..')) {
-							// 	node.properties.href =  '../' + node.properties.href;
-					 		// }
-							if (node.properties.href && !node.properties.href.startsWith('http') && !node.properties.href.startsWith('/')) {
-								node.properties.href =  '../' + node.properties.href;
-					 		}
 
-							// if (node.properties.href && !node.properties.href.startsWith('http') && !node.properties.href.startsWith('/')) {
+							if (currentFilename === '/home/wighawag/dev/wighawag/personal/svelte-kit-md-test/foam-pages/index.md') {
+								console.log({pathname, query, hash})
+							}
 
-							// }
+							if (pathname.startsWith('/')) {
+
+							} else {
+
+								if (pathname !== '') {
+									const urlLocalPath = path.join(path.dirname(currentFilename), pathname);
+									let relative = path.relative(currentFilename, urlLocalPath);
+
+									if (currentFilename === '/home/wighawag/dev/wighawag/personal/svelte-kit-md-test/foam-pages/index.md') {
+										console.log({urlLocalPath, relative})
+									}
+
+									
+									
+									if (pathname.indexOf('../static/') === -1) {
+										// use absolute path solve everything it seems
+										pathname = "/" + path.join(currentRelativePath, relative);
+									} else {
+										// keep for static assets
+										pathname = relative;
+									}
+									
+
+									if (currentRelativePath === 'index.md') {
+										pathname = pathname.replace('../../static/', '');
+									} else {
+										pathname = pathname.replace('../static/', '');
+									}
+									
+								} else {
+									if (hash.length > 0) {
+										// TODO better
+										if (currentRelativePath.endsWith('.md')) {
+											pathname = "/" + currentRelativePath.slice(0, currentRelativePath.length - 3) + '/';
+										} else {
+											pathname = "/" + currentRelativePath + '/';
+										}
+										
+									}
+	
+								}
+							}
+
+							if (pathname.endsWith('.md')) {
+								pathname = pathname.slice(0, pathname.length - 3);
+							}
+
+							if (pathname.endsWith('index')) {
+								pathname = pathname.slice(0, pathname.length - 5);
+							}
+
+							if (pathname.endsWith('index/')) {
+								pathname = pathname.slice(0, pathname.length - 6);
+							}
+
+							if (!pathname.endsWith('/') && !(pathname.lastIndexOf('.') > pathname.lastIndexOf('/'))) {
+								pathname = pathname + '/'
+							}
+
+
+							if (currentFilename === '/home/wighawag/dev/wighawag/personal/svelte-kit-md-test/foam-pages/index.md') {
+								console.log("=> ", {pathname, query, hash})
+							}
+
+							switch(node.tagName) {
+								case 'a':
+									node.properties.href = pathname + query + hash;
+									break;
+								case 'img':
+								case 'video':
+								case 'audio':
+									node.properties.src = pathname + query + hash;
+									break;
+							}
 						}
 					}
 				  	function transform(tree, file) {
@@ -205,7 +274,7 @@ const config = {
 		  injectDebugConsole: true,
 		}),
 		target: '#svelte',
-		trailingSlash: 'always',
+		trailingSlash: 'ignore',
 		vite: {
 		  build: {
 			sourcemap: true,

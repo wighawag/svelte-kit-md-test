@@ -2,7 +2,7 @@
 
 Automatically create a Daily Note by executing the "Foam: Open Daily Note" command. If a Daily Note for today's date already exists, the command opens the existing note.
 
-![Daily note feature in action](/images/daily-note.gif)
+![Daily note feature in action](../../static/images/daily-note.gif)
 
 ## Keyboard shortcut
 

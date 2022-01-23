@@ -13,7 +13,7 @@ The graph will:
 
 Currently, custom graph styles are supported through the `foam.graph.style` setting.
 
-![Graph style demo](/images/graph-style.gif)
+![Graph style demo](../../static/images/graph-style.gif)
 
 A sample configuration object is provided below:
 
@@ -59,4 +59,4 @@ And the following `settings.json`:
 
 Will result in the following graph:
 
-![Style node by type](/images/style-node-by-type.png)
+![Style node by type](../../static/images/style-node-by-type.png)

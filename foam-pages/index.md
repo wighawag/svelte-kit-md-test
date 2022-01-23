@@ -84,7 +84,7 @@ Check our [issues on GitHub](http://github.com/foambubble/foam/issues) if you ge
 
 **Foam** doesn't have features in the traditional sense. Out of the box, you have access to all features of VS Code and all the [[recommended-extensions]] you choose to install, but it's up to you to discover what you can do with it!
 
-![Short video of Foam in use](images/foam-navigation-demo.gif)
+![Short video of Foam in use](../static/images/foam-navigation-demo.gif)
 
 Head over to [[recipes]] for some useful patterns and ideas!
 

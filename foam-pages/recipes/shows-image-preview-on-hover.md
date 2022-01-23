@@ -6,5 +6,5 @@ Use extension: [Image preview](https://marketplace.visualstudio.com/items?itemNa
 
 It looks like this
 
-![picture 1](/images/preview-image-on-hover.png)
-![picture 2](/images/preview-image-in-glutter.png)
+![picture 1](../../static/images/preview-image-on-hover.png)
+![picture 2](../../static/images/preview-image-in-glutter.png)
