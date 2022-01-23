@@ -136,9 +136,12 @@ const config = {
 								url = node.properties.src;
 								break;
 						}
-
+						
+						// only process internal links
 						if (url && !url.startsWith('http')) {
 							const currentRelativePath = path.relative(pagesAbsoultePath, currentFilename);
+
+							// gather pathname, query and hash to ensure we can reconstruct them
 							const splitOne = url.split('?');
 							let pathname = '';
 							let hash = '';
@@ -163,29 +166,16 @@ const config = {
 								
 							}
 
-							if (pathname.startsWith('/daily-notes')) {
-								console.log({currentFilename});
-							}
-
-
-							if (currentFilename === '/home/wighawag/dev/wighawag/personal/svelte-kit-md-test/foam-pages/index.md') {
-								console.log({pathname, query, hash})
-							}
-
 							if (pathname.startsWith('/')) {
-
+								// ignore absolute path
 							} else {
 
 								if (pathname !== '') {
+									// pathname != current
+
 									const urlLocalPath = path.join(path.dirname(currentFilename), pathname);
 									let relative = path.relative(currentFilename, urlLocalPath);
 
-									if (currentFilename === '/home/wighawag/dev/wighawag/personal/svelte-kit-md-test/foam-pages/index.md') {
-										console.log({urlLocalPath, relative})
-									}
-
-									
-									
 									if (pathname.indexOf('../static/') === -1) {
 										// use absolute path solve everything it seems
 										pathname = "/" + path.join(currentRelativePath, relative);
@@ -194,14 +184,16 @@ const config = {
 										pathname = relative;
 									}
 									
-
+									
 									if (currentRelativePath === 'index.md') {
+										// special case for index, static is actually at level
 										pathname = pathname.replace('../../static/', '');
 									} else {
 										pathname = pathname.replace('../static/', '');
 									}
 									
 								} else {
+									// hash link in current page
 									if (hash.length > 0) {
 										// TODO better
 										if (currentRelativePath.endsWith('.md')) {
@@ -229,11 +221,6 @@ const config = {
 
 							if (!pathname.endsWith('/') && !(pathname.lastIndexOf('.') > pathname.lastIndexOf('/'))) {
 								pathname = pathname + '/'
-							}
-
-
-							if (currentFilename === '/home/wighawag/dev/wighawag/personal/svelte-kit-md-test/foam-pages/index.md') {
-								console.log("=> ", {pathname, query, hash})
 							}
 
 							switch(node.tagName) {
