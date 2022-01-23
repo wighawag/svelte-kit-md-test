@@ -75,14 +75,11 @@ const config = {
 			remarkPlugins: [
 				() => {
 					function visitor(node) {
-						console.log(`url: ${node.url}`);
 					  	if (node.url.endsWith('.md')) {
 							node.url = node.url.substr(0, node.url.length - 3);
 					 	}
 					}
 				  	function transform(tree) {
-						console.log(`transforming`);
-						console.log(tree)
 						visit(tree, ['link'], visitor);
 					}				  
 					return transform;
