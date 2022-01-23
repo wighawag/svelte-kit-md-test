@@ -2,7 +2,7 @@
 
 Automatically create a Daily Note by executing the "Foam: Open Daily Note" command. If a Daily Note for today's date already exists, the command opens the existing note.
 
-![Daily note feature in action](../images/daily-note.gif)
+![Daily note feature in action](/images/daily-note.gif)
 
 ## Keyboard shortcut
 
@@ -25,9 +25,9 @@ The above configuration would create a file `journal/note-2020-07-25.mdx`, with 
 
 ## Daily Note Templates
 
-Daily notes can also make use of [templates](note-templates), by defining a special `.foam/templates/daily-note.md` template.
+Daily notes can also make use of [templates](note-templates.md), by defining a special `.foam/templates/daily-note.md` template.
 
-See [Note Templates](note-templates) for details of the features available in templates.
+See [Note Templates](note-templates.md) for details of the features available in templates.
 
 ## Roam-style Automatic Daily Notes
 

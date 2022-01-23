@@ -6,7 +6,7 @@ Foam enables you to Link pages together using `[[file-name]]` annotations (i.e. 
   - See [[link-formatting-and-autocompletion]] for more information, and how to setup your link autocompletions to make this easier.
 - `Cmd` + `Click` ( `Ctrl` + `Click` on Windows ) on file name to navigate to file (`F12` also works while your cursor is on the file name)
 - `Cmd` + `Click` ( `Ctrl` + `Click` on Windows ) on non-existent file to create that file in the workspace.
-  - The note creation makes use of the special [`new-note.md` note template](features/note-templates)
+  - The note creation makes use of the special [`new-note.md` note template](../features/note-templates.md)
 
 > If the `F12` shortcut feels unnatural you can rebind it at File > Preferences > Keyboard Shortcuts by searching for `editor.action.revealDefinition`.
 

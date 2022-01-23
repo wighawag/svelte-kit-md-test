@@ -7,7 +7,7 @@ The Foam log can be found in the `Output` tab.
 1. To show the tab, click on `View > Output`.
 2. In the dropdown on the right of the tab, select `Foam`.
 
-![Find the foam log](../images/foam-log.png)
+![Find the foam log](/images/foam-log.png)
 
 ## Change the default logging level
 

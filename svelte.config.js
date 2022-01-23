@@ -29,6 +29,7 @@ function listFolder(dir, files=[]) {
 const pages = 'foam-pages';
 const assets = 'foam-static';
 const filepaths = listFolder(pages);
+const pagesAbsoultePath = path.resolve(pages);
 const pagePaths = filepaths.map(v => v.replace(/.md$/, '').replace(`${pages}/`, ''));
 const permalinks = [];
 const permalinkMap = {};
@@ -73,17 +74,19 @@ const config = {
 		mdsvex({
 			extensions: ['.md'],
 			remarkPlugins: [
-				() => {
-					function visitor(node) {
-					  	if (node.url.endsWith('.md')) {
-							node.url = node.url.substr(0, node.url.length - 3);
-					 	}
-					}
-				  	function transform(tree) {
-						visit(tree, ['link'], visitor);
-					}				  
-					return transform;
-				},
+			// 	() => {
+			// 		let currentFilename;
+			// 		function visitor(node, index, parent) {
+			// 			if (node.url.endsWith('.md')) {
+			// 				node.url = node.url.substr(0, node.url.length - 3);
+			// 		 	}
+			// 		}
+			// 	  	function transform(tree, file) {
+			// 			currentFilename = file.filename;
+			// 			visit(tree, ['link'], visitor);
+			// 		}				  
+			// 		return transform;
+			// 	},
 				remarkMath,
 				remarkGFM,
 				[
@@ -112,12 +115,76 @@ const config = {
 						wikiLinkClassName: 'internal wikilink'
 					}
 				],
-				remarkUnwrapImages
+				remarkUnwrapImages,
+				
 			],
 			rehypePlugins: [
 				rehypeMathJax,
 				rehypeSlug,
 				rehypeAutolinkHeadings,
+				() => {
+					let currentFilename;
+					function visitor(node, index, parent) {
+						// let url;
+						// switch(node.tagName) {
+						// 	case 'a':
+						// 		url = node.properites.href;
+						// 		break;
+						// 	case 'img':
+						// 	case 'video':
+						// 	case 'audio':
+						// 		url = node.properites.src;
+						// 		break;
+						// }
+
+						// if (url) {
+
+						// }
+
+						if (node.tagName === 'a') {
+							// console.log('found ', node);
+							if (node.properties.href && node.properties.href.length > 1 && node.properties.href.startsWith('#')) {
+								// console.log('found ', node);
+								let relative = path.relative(pagesAbsoultePath, currentFilename);
+								if (relative.endsWith('.md')) {
+									relative = relative.slice(0, relative.length - 3);
+								}
+								node.properties.href = "/" + relative + '/' + node.properties.href;
+							}
+
+							if (node.properties.href && node.properties.href.endsWith('index')) {
+								node.properties.href = node.properties.href.slice(0, node.properties.href.length - 5);
+					 		}
+							if (node.properties.href && node.properties.href.endsWith('index.md')) {
+								node.properties.href = node.properties.href.slice(0, node.properties.href.length - 8);
+					 		}
+							if (node.properties.href && node.properties.href.indexOf('index/#') >= 0) {
+								const index = node.properties.href.indexOf('index/#');
+								node.properties.href = node.properties.href.slice(0, index) + node.properties.href.slice(index+5);
+					 		}
+							if (node.properties.href && node.properties.href.indexOf('//#') >= 0) {
+								const index = node.properties.href.indexOf('//#');
+								node.properties.href = node.properties.href.slice(0, index) + node.properties.href.slice(index+1);
+					 		}
+
+							// if (node.properties.href && node.properties.href.startsWith('..')) {
+							// 	node.properties.href =  '../' + node.properties.href;
+					 		// }
+							if (node.properties.href && !node.properties.href.startsWith('http') && !node.properties.href.startsWith('/')) {
+								node.properties.href =  '../' + node.properties.href;
+					 		}
+
+							// if (node.properties.href && !node.properties.href.startsWith('http') && !node.properties.href.startsWith('/')) {
+
+							// }
+						}
+					}
+				  	function transform(tree, file) {
+						currentFilename = file.filename;
+						visit(tree, ['element'], visitor);
+					}				  
+					return transform;
+				},
 			],
 	  	})
 	],
@@ -138,7 +205,7 @@ const config = {
 		  injectDebugConsole: true,
 		}),
 		target: '#svelte',
-		trailingSlash: 'ignore',
+		trailingSlash: 'always',
 		vite: {
 		  build: {
 			sourcemap: true,

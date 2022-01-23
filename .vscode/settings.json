@@ -16,6 +16,16 @@
   "foam.edit.linkReferenceDefinitions": "withExtensions",
   "foam.openDailyNote.directory": "journal",
   "foam.openDailyNote.titleFormat": "fullDate",
+  "foam.files.ignore": [
+    "**/.vscode/**/*",
+    "**/_layouts/**/*",
+    "**/_site/**/*",
+    "**/node_modules/**/*",
+    "**/__layout**",
+    "**/build/**/*",
+    "**/svelte-kit/**/*",
+    "**/.yalc/**/*"
+  ],
   "git.enableSmartCommit": true,
   "git.postCommitCommand": "sync",
   "markdown.preview.breaks": true,
