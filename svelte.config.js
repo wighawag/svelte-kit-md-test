@@ -11,6 +11,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeMathJax from 'rehype-mathjax';
 
 import {execSync} from 'child_process';
+import {visit} from 'unist-util-visit';
 
 import fs from 'fs';
 import path from 'path';
@@ -72,6 +73,20 @@ const config = {
 		mdsvex({
 			extensions: ['.md'],
 			remarkPlugins: [
+				() => {
+					function visitor(node) {
+						console.log(`url: ${node.url}`);
+					  	if (node.url.endsWith('.md')) {
+							node.url = node.url.substr(0, node.url.length - 3);
+					 	}
+					}
+				  	function transform(tree) {
+						console.log(`transforming`);
+						console.log(tree)
+						visit(tree, ['link'], visitor);
+					}				  
+					return transform;
+				},
 				remarkMath,
 				remarkGFM,
 				[
