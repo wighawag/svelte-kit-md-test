@@ -14,6 +14,7 @@ specifiers:
   svelte: ^3.44.0
   svelte-preprocess: ^4.9.4
   sveltejs-adapter-ipfs: ^0.2.1
+  unist-util-visit: ^4.1.0
 
 dependencies:
   rehype-mathjax: 4.0.2
@@ -31,6 +32,7 @@ devDependencies:
   svelte: 3.46.2
   svelte-preprocess: 4.10.2_svelte@3.46.2
   sveltejs-adapter-ipfs: 0.2.1
+  unist-util-visit: 4.1.0
 
 packages:
 
