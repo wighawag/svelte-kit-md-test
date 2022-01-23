@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    // Foam's own extension
+    "foam.foam-vscode",
+
+    // Tons of markdown goodies (lists, tables of content, so much more)
+    "yzhang.markdown-all-in-one",
+
+    // Image-pasting for markdown
+    "mushan.vscode-paste-image",
+
+    // Spell checking for text, markdown and latex
+    "ban.spellright",
+
+    // more useful extensions:
+    "bierner.emojisense",
+    "vsls-contrib.gitdoc",
+    "bierner.markdown-emoji",
+    "jebbs.markdown-extended",
+    "bierner.markdown-footnotes",
+    "hancel.markdown-image",
+    "kortina.vscode-markdown-notes",
+    "bierner.markdown-mermaid",
+    "skn0tt.markdown-link-expander",
+    "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
+  ]
+}
