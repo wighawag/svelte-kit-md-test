@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@sveltejs/kit': 1.0.0-next.212
+  foam-svelte-kit: link:.yalc/foam-svelte-kit
   ipfs-gateway-emulator: ^4.2.1-ipfs.2
   mdsvex: ^0.9.8
   rehype-autolink-headings: ^6.1.1
@@ -22,6 +23,7 @@ dependencies:
 
 devDependencies:
   '@sveltejs/kit': 1.0.0-next.212_svelte@3.46.2
+  foam-svelte-kit: link:.yalc/foam-svelte-kit
   ipfs-gateway-emulator: 4.2.1-ipfs.2
   mdsvex: 0.9.8_svelte@3.46.2
   rehype-autolink-headings: 6.1.1
